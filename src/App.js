@@ -25,17 +25,27 @@ class App extends React.Component {
 
   selectUser(e) {
     const user = e.currentTarget.value;
-    console.log(user);
     this.setState({ selectedUser: user });
+    const details = `https://api.github.com/users/${user}`;
+    fetch(details)
+      .then(response => response.json())
+      .then(info =>
+        this.setState({
+          detailedUser: info
+        })
+      );
   }
 
   render() {
-    const { students, selectedUser } = this.state;
-    console.log(this.state);
+    const { students, selectedUser, detailedUser } = this.state;
     return (
       <div className="App">
         <Select students={students} selectUser={this.selectUser} />
-        <Card students={students} selectedUser={selectedUser} />
+        <Card
+          students={students}
+          selectedUser={selectedUser}
+          detailedUser={detailedUser}
+        />
       </div>
     );
   }
