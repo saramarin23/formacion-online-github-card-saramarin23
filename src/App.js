@@ -2,8 +2,8 @@ import React from "react";
 import fetchUsers from "./service/users.js";
 import "./App.css";
 
-import Card from "./components/Card";
-import Select from "./components/Select";
+import Card from "./components/card/Card";
+import Select from "./components/select/Select";
 
 class App extends React.Component {
   constructor(props) {

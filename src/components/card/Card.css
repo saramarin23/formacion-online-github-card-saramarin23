@@ -1,0 +1,32 @@
+img {
+  width: 40%;
+}
+
+.user_container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.user_photo {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.name_container {
+  display: flex;
+  padding: 20px 0 0 30px;
+}
+
+.user_nickname {
+  color: darkgrey;
+}
+
+.followers_container {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  background-color: #0dbfad;
+}
