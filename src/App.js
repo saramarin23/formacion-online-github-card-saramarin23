@@ -10,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       students: [],
-      selectedUser: ""
+      selectedUser: "",
+      isLoading: false
     };
     this.selectUser = this.selectUser.bind(this);
   }
@@ -25,22 +26,28 @@ class App extends React.Component {
 
   selectUser(e) {
     const user = e.currentTarget.value;
-    this.setState({ selectedUser: user });
+    this.setState({ selectedUser: user, isLoading: true });
     const details = `https://api.github.com/users/${user}`;
     fetch(details)
       .then(response => response.json())
       .then(info =>
         this.setState({
-          detailedUser: info
+          detailedUser: info,
+          isLoading: false
         })
       );
   }
 
   render() {
-    const { students, selectedUser, detailedUser } = this.state;
+    const { students, selectedUser, detailedUser, isLoading } = this.state;
+
     return (
       <div className="App">
-        <Select students={students} selectUser={this.selectUser} />
+        <Select
+          students={students}
+          selectUser={this.selectUser}
+          isLoading={isLoading}
+        />
         <Card
           students={students}
           selectedUser={selectedUser}
